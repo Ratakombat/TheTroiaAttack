@@ -31,5 +31,10 @@ public class BulletController : MonoBehaviour
         ContactPoint contact = other.GetContact(0);
         GameObject.Instantiate(bulletDecal, contact.point + contact.normal * 0.0001f, Quaternion.LookRotation(contact.normal));
         Destroy(gameObject);
+
+        /*if (other.gameObject.CompareTag("Enemy"))
+        {
+            
+        }*/
     }
 }

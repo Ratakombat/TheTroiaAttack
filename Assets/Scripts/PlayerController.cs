@@ -32,6 +32,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float animationPlayTransition = 0.15f;
 
+    [SerializeField]
+    private Transform aimTarget;
+    [SerializeField]
+    private float aimDistance = 1f;
+
     private CharacterController controller;
     private PlayerInput playerInput;
     private Vector3 playerVelocity;
@@ -44,6 +49,9 @@ public class PlayerController : MonoBehaviour
 
     private Animator animator;
     int jumpAnimation;
+    int recoilAnimation;
+
+
     
     int moveXAnimationParameterId;
     int moveZAnimationParameterId;
@@ -65,6 +73,7 @@ public class PlayerController : MonoBehaviour
         //Animations
         animator = GetComponent<Animator>();
         jumpAnimation = Animator.StringToHash("Pistol Jump");
+        recoilAnimation = Animator.StringToHash("Pistol Shoot Recoil");
 
         moveXAnimationParameterId = Animator.StringToHash("MoveX");
         moveZAnimationParameterId = Animator.StringToHash("MoveZ");
@@ -95,10 +104,15 @@ public class PlayerController : MonoBehaviour
             bulletController.hit = false;
         }
 
+        animator.CrossFade(recoilAnimation, animationPlayTransition);
+
     }
 
     void Update()
     {
+        aimTarget.position = cameraTransform.position + cameraTransform.forward * aimDistance;
+
+
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {

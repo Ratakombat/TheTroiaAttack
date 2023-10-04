@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 5073395064839252470}
   - component: {fileID: 5073395064839252469}
   - component: {fileID: 5073395064839252468}
-  - component: {fileID: 5073395064839252467}
+  - component: {fileID: -1036997823109656472}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,12 +93,12 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5073395064839252466}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5073395064839252467
+--- !u!114 &-1036997823109656472
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5073395064839252466}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1e5f8603cbb8c1468fba4f050dea4e9, type: 3}
+  m_Script: {fileID: 11500000, guid: da04ea89f6cd9c94a9a6438f78f42a1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletDecal: {fileID: 8341616912732981097, guid: 53becd7e187e2914d94c05f2e4bd7e07, type: 3}

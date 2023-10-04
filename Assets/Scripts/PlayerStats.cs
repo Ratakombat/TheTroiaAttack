@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class PlayerStats : CharacterStats
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+   private PlayerHUD hud;
+     
+   private void Start() {
+        GetReferences();
+        InitVariables();
+   }
 
-    // Update is called once per frame
-    void Update()
+   private void GetReferences()
+   {
+        hud = GetComponent<PlayerHUD>();
+   }
+
+     public override void CheckHealth()
     {
-        
+        base.CheckHealth();
+        hud.UpdateHealth(health, maxHealth);
     }
 }

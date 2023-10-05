@@ -21,4 +21,5 @@ public class PlayerStats : CharacterStats
         base.CheckHealth();
         hud.UpdateHealth(health, maxHealth);
     }
+    
 }

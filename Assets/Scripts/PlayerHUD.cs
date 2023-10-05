@@ -10,8 +10,9 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField] private TextMeshProUGUI maxHealthText;
     public void UpdateHealth(int currentHealth, int maxHealth)
     {
-        currentHealthText.SetText(currentHealth.ToString());
-        maxHealthText.SetText(maxHealth.ToString());
+        currentHealthText.text = currentHealth.ToString();
+        maxHealthText.text = maxHealth.ToString();
     }
+
 }
 

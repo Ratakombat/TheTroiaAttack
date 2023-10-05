@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
@@ -11,6 +12,17 @@ public class CharacterStats : MonoBehaviour
 
     private void Start() {
         InitVariables();
+    }
+
+    private void Update() {
+        CheckHealth();
+    
+        //test input
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            TakeDamage(10);
+        }
+
     }
     public virtual void CheckHealth(){
         if (health <= 0)
@@ -25,11 +37,11 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
-    public void Die(){
+    public virtual void Die(){
         isDead = true;
     }
 
-    private void SetHealthTo(int healthToSetTo){
+    public void SetHealthTo(int healthToSetTo){
         health = healthToSetTo;
         CheckHealth();
     }
@@ -45,7 +57,7 @@ public class CharacterStats : MonoBehaviour
         SetHealthTo(healthAfterHeal);
     }
 
-    public void InitVariables(){
+    public virtual void InitVariables(){
         maxHealth = 100;
         health = maxHealth;
         isDead = false;

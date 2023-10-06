@@ -7,7 +7,6 @@ public class EnemyController : MonoBehaviour
 {
     private NavMeshAgent agent;
 
-    [SerializeField]
     private Transform target;
 
 
@@ -33,7 +32,7 @@ public class EnemyController : MonoBehaviour
 
     private void GetReferences(){
         agent = GetComponent<NavMeshAgent>();
-
+        target = PlayerController.instance;
     }
 
 

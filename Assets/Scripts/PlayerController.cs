@@ -5,6 +5,10 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
+    #region
+    public static Transform instance;
+    #endregion
+
     [SerializeField]
     private float playerSpeed = 2.0f;
     [SerializeField]
@@ -78,6 +82,10 @@ public class PlayerController : MonoBehaviour
         moveXAnimationParameterId = Animator.StringToHash("MoveX");
         moveZAnimationParameterId = Animator.StringToHash("MoveZ");
         
+        //-------------
+        instance = this.transform;
+
+
     }
 
     private void OnEnable() {

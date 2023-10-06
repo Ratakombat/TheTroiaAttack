@@ -36,8 +36,6 @@ public class BulletController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-
         else
         {
             ContactPoint contact = other.GetContact(0);

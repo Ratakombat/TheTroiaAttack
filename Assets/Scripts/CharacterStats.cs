@@ -41,6 +41,10 @@ public class CharacterStats : MonoBehaviour
         isDead = true;
     }
 
+    public bool IsDead(){
+        return isDead;
+    }
+
     public void SetHealthTo(int healthToSetTo){
         health = healthToSetTo;
         CheckHealth();

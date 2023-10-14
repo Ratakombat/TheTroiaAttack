@@ -422,7 +422,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 268099544}
   m_LocalRotation: {x: 0.028619176, y: 0, z: 0, w: 0.9995904}
-  m_LocalPosition: {x: 1.9830459, y: 2.1829426, z: -3.3006613}
+  m_LocalPosition: {x: 1.1669141, y: 2.1829426, z: -3.3006613}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -487,7 +487,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 351678064}
   m_LocalRotation: {x: 0.70710695, y: 0.000000059604623, z: 0.000000029802312, w: 0.7071066}
-  m_LocalPosition: {x: 0.0028750354, y: -0.007999924, z: 0.08562507}
+  m_LocalPosition: {x: 0.0332, y: -0.0129, z: 0.0794}
   m_LocalScale: {x: 0.25, y: 0.20634457, z: 0.2525859}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2010,7 +2010,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1421854317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4195,8 +4195,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5294966827845719622}
-  m_LocalRotation: {x: 0.02861949, y: 0, z: 0, w: 0.9995904}
-  m_LocalPosition: {x: 1.0832968, y: 2.121847, z: -1.6314225}
+  m_LocalRotation: {x: 0.028619176, y: 0, z: 0, w: 0.9995904}
+  m_LocalPosition: {x: 0.63746095, y: 2.1218457, z: -1.6314225}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4318,10 +4318,10 @@ MonoBehaviour:
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.3672515
+  m_SoftZoneWidth: 0.15
   m_SoftZoneHeight: 0.4778598
-  m_BiasX: -0.00000008114963
-  m_BiasY: 0.000000031183124
+  m_BiasX: -0.15000005
+  m_BiasY: 0
   m_CenterOnActivate: 0
   m_GroupFramingMode: 2
   m_AdjustmentMode: 2
@@ -4348,7 +4348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RecenterTarget: 2
   m_VerticalAxis:
-    Value: 3.28
+    Value: 3.2799637
     m_SpeedMode: 1
     m_MaxSpeed: 1.5
     m_AccelTime: 0.2
@@ -4549,9 +4549,9 @@ MonoBehaviour:
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.3672515
+  m_SoftZoneWidth: 0.2
   m_SoftZoneHeight: 0.4778598
-  m_BiasX: -0.00000016229926
+  m_BiasX: -0.00000014901161
   m_BiasY: 0
   m_CenterOnActivate: 0
   m_GroupFramingMode: 2
@@ -4676,7 +4676,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5294966829249422455}
   m_LocalRotation: {x: 0.028619176, y: 0, z: 0, w: 0.9995904}
-  m_LocalPosition: {x: 1.9830459, y: 2.1829426, z: -3.3006613}
+  m_LocalPosition: {x: 1.1669141, y: 2.1829426, z: -3.3006613}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4781,7 +4781,7 @@ GameObject:
   - component: {fileID: 5373944689786398563}
   m_Layer: 0
   m_Name: Ball Variant
-  m_TagString: Bullet
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

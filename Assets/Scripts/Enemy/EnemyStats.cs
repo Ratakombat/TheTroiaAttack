@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyStats : CharacterStats
-{
+{   
     [SerializeField] private float damage;
     [SerializeField] private float attackSpeed;
     [SerializeField] private bool canAttack;

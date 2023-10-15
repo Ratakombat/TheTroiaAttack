@@ -422,7 +422,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 268099544}
   m_LocalRotation: {x: 0.028619176, y: 0, z: 0, w: 0.9995904}
-  m_LocalPosition: {x: 1.1669141, y: 2.1829426, z: -3.3006613}
+  m_LocalPosition: {x: 1.4494597, y: 2.1829426, z: -3.3006613}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1231,6 +1231,7 @@ MonoBehaviour:
   animationPlayTransition: 0.15
   aimTarget: {fileID: 955311169}
   aimDistance: 10
+  damage: 5
 --- !u!143 &907418910
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2027,43 +2028,43 @@ MonoBehaviour:
   - name: Wave1
     enemiesAmount: 3
     delay: 1
-    enemy: {fileID: 3684744100692130846, guid: 138d62a4251a8cd4a8a777d4eeab204f, type: 3}
+    enemy: {fileID: 8665176438636179111, guid: e6dad6df1215d7940993a36d43948159, type: 3}
   - name: Wave2
     enemiesAmount: 5
     delay: 1
-    enemy: {fileID: 3684744100692130846, guid: 138d62a4251a8cd4a8a777d4eeab204f, type: 3}
+    enemy: {fileID: 8665176438636179111, guid: e6dad6df1215d7940993a36d43948159, type: 3}
   - name: Wave3
     enemiesAmount: 7
     delay: 1
-    enemy: {fileID: 3684744100692130846, guid: 138d62a4251a8cd4a8a777d4eeab204f, type: 3}
+    enemy: {fileID: 8665176438636179111, guid: e6dad6df1215d7940993a36d43948159, type: 3}
   - name: Wave4
     enemiesAmount: 9
     delay: 1
-    enemy: {fileID: 3684744100692130846, guid: 138d62a4251a8cd4a8a777d4eeab204f, type: 3}
+    enemy: {fileID: 8665176438636179111, guid: e6dad6df1215d7940993a36d43948159, type: 3}
   - name: Wave5
     enemiesAmount: 11
     delay: 1
-    enemy: {fileID: 3684744100692130846, guid: 138d62a4251a8cd4a8a777d4eeab204f, type: 3}
+    enemy: {fileID: 8665176438636179111, guid: e6dad6df1215d7940993a36d43948159, type: 3}
   - name: Wave6
     enemiesAmount: 13
     delay: 1
-    enemy: {fileID: 3684744100692130846, guid: 138d62a4251a8cd4a8a777d4eeab204f, type: 3}
+    enemy: {fileID: 8665176438636179111, guid: e6dad6df1215d7940993a36d43948159, type: 3}
   - name: Wave7
     enemiesAmount: 15
     delay: 1
-    enemy: {fileID: 3684744100692130846, guid: 138d62a4251a8cd4a8a777d4eeab204f, type: 3}
+    enemy: {fileID: 8665176438636179111, guid: e6dad6df1215d7940993a36d43948159, type: 3}
   - name: Wave8
     enemiesAmount: 17
     delay: 1
-    enemy: {fileID: 3684744100692130846, guid: 138d62a4251a8cd4a8a777d4eeab204f, type: 3}
+    enemy: {fileID: 8665176438636179111, guid: e6dad6df1215d7940993a36d43948159, type: 3}
   - name: Wave9
     enemiesAmount: 19
     delay: 1
-    enemy: {fileID: 3684744100692130846, guid: 138d62a4251a8cd4a8a777d4eeab204f, type: 3}
+    enemy: {fileID: 8665176438636179111, guid: e6dad6df1215d7940993a36d43948159, type: 3}
   - name: Wave10
     enemiesAmount: 21
     delay: 1
-    enemy: {fileID: 3684744100692130846, guid: 138d62a4251a8cd4a8a777d4eeab204f, type: 3}
+    enemy: {fileID: 8665176438636179111, guid: e6dad6df1215d7940993a36d43948159, type: 3}
   timeBetweenWaves: 3
   wavesCountdown: 0
   spawners:
@@ -4196,7 +4197,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5294966827845719622}
   m_LocalRotation: {x: 0.028619176, y: 0, z: 0, w: 0.9995904}
-  m_LocalPosition: {x: 0.63746095, y: 2.1218457, z: -1.6314225}
+  m_LocalPosition: {x: 0.7918097, y: 2.1218457, z: -1.6314225}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4676,7 +4677,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5294966829249422455}
   m_LocalRotation: {x: 0.028619176, y: 0, z: 0, w: 0.9995904}
-  m_LocalPosition: {x: 1.1669141, y: 2.1829426, z: -3.3006613}
+  m_LocalPosition: {x: 1.4494597, y: 2.1829426, z: -3.3006613}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     private NavMeshAgent agent;
-
+    private Animator anim = null;
     private Transform target;
 
 
@@ -20,7 +20,14 @@ public class EnemyController : MonoBehaviour
 
     private void MoveToTarget(){
         agent.SetDestination(target.position);
+        anim.SetFloat("Speed", 1f, 0.3f, Time.deltaTime);
         RotateToTarget();
+
+        float distanceToTarget = Vector3.Distance(target.position, transform.position);
+
+        if(distanceToTarget <= agent.stoppingDistance){
+            anim.SetFloat("Speed", 0f);
+        }
     }  
 
     private void RotateToTarget(){
@@ -33,6 +40,8 @@ public class EnemyController : MonoBehaviour
     private void GetReferences(){
         agent = GetComponent<NavMeshAgent>();
         target = PlayerController.instance;
+
+        anim = GetComponentInChildren<Animator>();
     }
 
 

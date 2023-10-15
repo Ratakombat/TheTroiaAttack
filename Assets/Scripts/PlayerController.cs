@@ -41,6 +41,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float aimDistance = 1f;
 
+    [SerializeField]
+    private int damage = 5;
+
     private CharacterController controller;
     private PlayerInput playerInput;
     private Vector3 playerVelocity;
@@ -112,7 +115,7 @@ public class PlayerController : MonoBehaviour
             bulletController.hit = true;
 
             CharacterStats enemyStats = hit.transform.GetComponent<CharacterStats>();
-            enemyStats.TakeDamage(10);
+            enemyStats.TakeDamage(damage);
         }
         else {
             bulletController.target = cameraTransform.position + cameraTransform.forward * bulletHitMissDistance;

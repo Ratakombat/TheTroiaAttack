@@ -53,10 +53,7 @@ public class EnemyController : MonoBehaviour
             if(hasStopped){
                 hasStopped = false;
             }
-
         }
-
-
     }  
 
     private void RotateToTarget(){

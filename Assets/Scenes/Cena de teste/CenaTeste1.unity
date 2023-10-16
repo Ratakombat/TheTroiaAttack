@@ -422,7 +422,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 268099544}
   m_LocalRotation: {x: 0.028619176, y: 0, z: 0, w: 0.9995904}
-  m_LocalPosition: {x: 1.4494597, y: 2.1829426, z: -3.3006613}
+  m_LocalPosition: {x: 1.2878052, y: 2.1829426, z: -3.3006613}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1174,6 +1174,7 @@ Transform:
   - {fileID: 3745622627467899098}
   - {fileID: 938697200}
   - {fileID: 1637815078}
+  - {fileID: 1421854318}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2091,8 +2092,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1421854316}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2111,8 +2112,8 @@ Transform:
   - {fileID: 1948310369}
   - {fileID: 1276497631}
   - {fileID: 2025965070}
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 907418907}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1484055992
 GameObject:
@@ -4197,7 +4198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5294966827845719622}
   m_LocalRotation: {x: 0.028619176, y: 0, z: 0, w: 0.9995904}
-  m_LocalPosition: {x: 0.7918097, y: 2.1218457, z: -1.6314225}
+  m_LocalPosition: {x: 0.7035012, y: 2.1218457, z: -1.6314225}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4677,7 +4678,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5294966829249422455}
   m_LocalRotation: {x: 0.028619176, y: 0, z: 0, w: 0.9995904}
-  m_LocalPosition: {x: 1.4494597, y: 2.1829426, z: -3.3006613}
+  m_LocalPosition: {x: 1.2878052, y: 2.1829426, z: -3.3006613}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

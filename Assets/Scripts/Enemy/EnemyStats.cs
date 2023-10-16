@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class EnemyStats : CharacterStats
 {   
-    [SerializeField] private float damage;
-    [SerializeField] private float attackSpeed;
+    [SerializeField] private int damage;
+    public float attackSpeed;
     [SerializeField] private bool canAttack;
 
     private void Start() {
         InitVariables();
     }
 
-    public void DealDamage()
+    public void DealDamage(CharacterStats statsToDamage)
     {   
-        //Damage funcionality
+        statsToDamage.TakeDamage(damage);
 
 
     }

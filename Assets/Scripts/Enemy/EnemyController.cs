@@ -6,7 +6,10 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     private NavMeshAgent agent;
+    private float timeOfLastAttack = 0f;
+    private bool hasStopped = false;
     private Animator anim = null;
+    private EnemyStats stats = null;
     private Transform target;
 
 
@@ -27,7 +30,33 @@ public class EnemyController : MonoBehaviour
 
         if(distanceToTarget <= agent.stoppingDistance){
             anim.SetFloat("Speed", 0f);
+
+            //Attack
+
+            if(!hasStopped){
+                hasStopped = true;
+                timeOfLastAttack = Time.time;
+            }
+
+               
+   
+            if (Time.time >= timeOfLastAttack + stats.attackSpeed)
+            {   
+                timeOfLastAttack = Time.time;
+                CharacterStats targetStats = target.GetComponent<CharacterStats>();
+                AttackTarget(targetStats);
+            }
+            
         }
+        else
+        {
+            if(hasStopped){
+                hasStopped = false;
+            }
+
+        }
+
+
     }  
 
     private void RotateToTarget(){
@@ -36,12 +65,20 @@ public class EnemyController : MonoBehaviour
         transform.rotation = rotation;
     }
 
+    private void AttackTarget(CharacterStats statsToDamage){
+        anim.SetTrigger("Attack");
 
+        stats.DealDamage(statsToDamage);
+
+
+    }
     private void GetReferences(){
         agent = GetComponent<NavMeshAgent>();
         target = PlayerController.instance;
 
-        anim = GetComponentInChildren<Animator>();
+        anim = GetComponentInChildren<Animator>();  
+
+        stats = GetComponent<EnemyStats>();
     }
 
 

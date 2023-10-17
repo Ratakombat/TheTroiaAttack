@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.TextCore.Text;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
@@ -8,6 +9,10 @@ public class PlayerController : MonoBehaviour
     #region
     public static Transform instance;
     #endregion
+
+    private PlayerStats playerStats = null;
+    [SerializeField] private GameObject thirdCamera;
+    [SerializeField] private GameObject aimCamera;
 
     [SerializeField]
     private float playerSpeed = 2.0f;
@@ -73,6 +78,8 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
+        playerStats = GetComponent<PlayerStats>();
+
         cameraTransform = Camera.main.transform;
         moveAction = playerInput.actions["Move"];
         jumpAction = playerInput.actions["Jump"];
@@ -103,67 +110,91 @@ public class PlayerController : MonoBehaviour
     }
 
     private void ShootGun(){
-        RaycastHit hit;
-        
-        GameObject bullet = GameObject.Instantiate(bulletPrefab, barrelTransform.position, Quaternion.identity, bulletParent);
-        BulletController bulletController = bullet.GetComponent<BulletController>();
+
+        if(!playerStats.IsDead())
+        {
+
         
 
-        if(Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity)){
+            RaycastHit hit;
             
-            bulletController.target = hit.point;
-            bulletController.hit = true;
+            GameObject bullet = GameObject.Instantiate(bulletPrefab, barrelTransform.position, Quaternion.identity, bulletParent);
+            BulletController bulletController = bullet.GetComponent<BulletController>();
+            
 
-            CharacterStats enemyStats = hit.transform.GetComponent<CharacterStats>();
-            enemyStats.TakeDamage(damage);
+            if(Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity)){
+                
+                bulletController.target = hit.point;
+                bulletController.hit = true;
+
+                CharacterStats enemyStats = hit.transform.GetComponent<CharacterStats>();
+                enemyStats.TakeDamage(damage);
+            }
+            else {
+                bulletController.target = cameraTransform.position + cameraTransform.forward * bulletHitMissDistance;
+                bulletController.hit = false;
+            }
+
+            animator.CrossFade(recoilAnimation, animationPlayTransition);
         }
-        else {
-            bulletController.target = cameraTransform.position + cameraTransform.forward * bulletHitMissDistance;
-            bulletController.hit = false;
-        }
-
-        animator.CrossFade(recoilAnimation, animationPlayTransition);
-
     }
 
     void Update()
     {
-        aimTarget.position = cameraTransform.position + cameraTransform.forward * aimDistance;
-
-
-        groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerVelocity.y < 0)
+        if (!playerStats.IsDead())
         {
-            playerVelocity.y = 0f;
+            
+        
+
+
+            aimTarget.position = cameraTransform.position + cameraTransform.forward * aimDistance;
+
+
+            groundedPlayer = controller.isGrounded;
+            if (groundedPlayer && playerVelocity.y < 0)
+            {
+                playerVelocity.y = 0f;
+            }
+
+            Vector2 input = moveAction.ReadValue<Vector2>();
+
+            currentAnimationBlendVector = Vector2.SmoothDamp(currentAnimationBlendVector, input, ref animationVelocity, animationSmoothTime);
+
+            Vector3 move = new Vector3(currentAnimationBlendVector.x, 0, currentAnimationBlendVector.y);
+
+
+            move = move.x * cameraTransform.right.normalized + move.z * cameraTransform.forward.normalized;
+            move.y = 0f;
+            controller.Move(move * Time.deltaTime * playerSpeed);
+
+            //Blend Strafe Animation
+            animator.SetFloat(moveXAnimationParameterId, currentAnimationBlendVector.x);
+            animator.SetFloat(moveZAnimationParameterId, currentAnimationBlendVector.y);
+
+            // Changes the height position of the player..
+            if (jumpAction.triggered && groundedPlayer)
+            {
+                playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+                animator.CrossFade(jumpAnimation, animationPlayTransition);
+            }
+
+            playerVelocity.y += gravityValue * Time.deltaTime;
+            controller.Move(playerVelocity * Time.deltaTime);
+
+            // Rotate towards camera direction.
+            Quaternion targetRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
+            transform.rotation =  Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            
+            
+        }
+        else 
+        {
+            thirdCamera.SetActive(false);
+            aimCamera.SetActive(false);
+            Cursor.lockState = CursorLockMode.None;
         }
 
-        Vector2 input = moveAction.ReadValue<Vector2>();
-
-        currentAnimationBlendVector = Vector2.SmoothDamp(currentAnimationBlendVector, input, ref animationVelocity, animationSmoothTime);
-
-        Vector3 move = new Vector3(currentAnimationBlendVector.x, 0, currentAnimationBlendVector.y);
 
 
-        move = move.x * cameraTransform.right.normalized + move.z * cameraTransform.forward.normalized;
-        move.y = 0f;
-        controller.Move(move * Time.deltaTime * playerSpeed);
-
-        //Blend Strafe Animation
-        animator.SetFloat(moveXAnimationParameterId, currentAnimationBlendVector.x);
-        animator.SetFloat(moveZAnimationParameterId, currentAnimationBlendVector.y);
-
-        // Changes the height position of the player..
-        if (jumpAction.triggered && groundedPlayer)
-        {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-            animator.CrossFade(jumpAnimation, animationPlayTransition);
-        }
-
-        playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
-
-        // Rotate towards camera direction.
-        Quaternion targetRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
-        transform.rotation =  Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-    }
+    } 
 }

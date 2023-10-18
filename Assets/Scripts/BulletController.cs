@@ -34,7 +34,7 @@ public class BulletController : MonoBehaviour
     public void OnCollisionEnter(Collision other) 
     {
 
-        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Bullet"))
         {
             Destroy(gameObject);
         }

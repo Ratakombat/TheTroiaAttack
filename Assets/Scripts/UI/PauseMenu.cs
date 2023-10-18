@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -24,6 +25,18 @@ public class PauseMenu : MonoBehaviour
         thirdCanvas.SetActive(false);
         aimCanvas.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
+    }
+
+
+    public void MainMenu(){
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.None;
+        pauseCanvas.SetActive(false);
+        thirdCanvas.SetActive(true);
+        aimCanvas.SetActive(true);
+        SceneManager.LoadScene(0);
+       
+
     }
 
     public void Resume(){

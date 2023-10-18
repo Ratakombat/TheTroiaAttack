@@ -16,8 +16,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float wavesCountdown = 0;
     [SerializeField] private TextMeshProUGUI currentWaveCanvas;
     [SerializeField] private TextMeshProUGUI timeToNextWaveCanvas;
+    [SerializeField] private TextMeshProUGUI enemiesAliveNum;
     [SerializeField] private GameObject timeToNextWaveText;
     [SerializeField] private GameObject timeToNextWaveNum;
+    
     private SpawnState state = SpawnState.COUTING;
     
 
@@ -34,6 +36,8 @@ public class EnemySpawner : MonoBehaviour
     }
 
     private void Update() {
+        EnemiesAlive();
+
         if(state == SpawnState.WAITING)
         {
             if(!EnemiesAreDead())
@@ -123,4 +127,19 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+
+    private void EnemiesAlive(){
+        List<CharacterStats> filteredList = new List<CharacterStats>();
+        foreach (CharacterStats enemy in enemyList)
+        {
+            if(enemy != null){
+                filteredList.Add(enemy);
+            }
+        }
+
+
+        int aliveEnemies = filteredList.Count;
+        
+        enemiesAliveNum.text = aliveEnemies.ToString();
+    }
 }

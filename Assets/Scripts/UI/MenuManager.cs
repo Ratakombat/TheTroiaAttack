@@ -24,6 +24,11 @@ public class MenuManager : MonoBehaviour
 
     }
 
+    public void ParkourMode(){
+        SceneManager.LoadScene(2);
+
+    }
+
     public void Quitt(){
         Application.Quit();
 

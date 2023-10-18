@@ -15,6 +15,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float timeBetweenWaves = 3f;
     [SerializeField] private float wavesCountdown = 0;
     [SerializeField] private TextMeshProUGUI currentWaveCanvas;
+    [SerializeField] private TextMeshProUGUI timeToNextWaveCanvas;
+    [SerializeField] private GameObject timeToNextWaveText;
+    [SerializeField] private GameObject timeToNextWaveNum;
     private SpawnState state = SpawnState.COUTING;
     
 
@@ -24,6 +27,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<CharacterStats> enemyList;
 
     private void Start() {
+        timeToNextWaveText.SetActive(false);
+        timeToNextWaveNum.SetActive(false);
         wavesCountdown = timeBetweenWaves;
         currentWave = 0;
     }
@@ -42,12 +47,19 @@ public class EnemySpawner : MonoBehaviour
             if(state != SpawnState.SPAWNING){
                 StartCoroutine(SpawnWave(waves[currentWave]));
 
+                timeToNextWaveText.SetActive(false);
+                timeToNextWaveNum.SetActive(false);
             }
             
         }
         else
         {
             wavesCountdown -= Time.deltaTime;
+                timeToNextWaveText.SetActive(true);
+                timeToNextWaveNum.SetActive(true);
+                int textWavesCountDown = (int)wavesCountdown + 1;
+                timeToNextWaveCanvas.text = textWavesCountDown.ToString(); 
+            
         }
     }
 
@@ -98,6 +110,7 @@ public class EnemySpawner : MonoBehaviour
 
         state = SpawnState.COUTING;
         wavesCountdown = timeBetweenWaves;
+        
 
         if(currentWave + 1 > waves.Length - 1){
             currentWave = 0;

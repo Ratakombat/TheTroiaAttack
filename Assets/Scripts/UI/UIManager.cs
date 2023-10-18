@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject hudCanvas = null;
     [SerializeField] private GameObject endCanvas = null;
+    [SerializeField] private GameObject PauseCanvas = null;
 
     private void Start() {
         SetActiveHud(true);
@@ -15,6 +16,7 @@ public class UIManager : MonoBehaviour
    
             hudCanvas.SetActive(state);
             endCanvas.SetActive(!state);
+            PauseCanvas.SetActive(!state);
     }
 
     public void Restart(){

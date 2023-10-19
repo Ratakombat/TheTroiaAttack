@@ -38,15 +38,15 @@ public class MenuManager : MonoBehaviour
     }
 
     public void LowQuality(){
-        QualitySettings.SetQualityLevel(2, true);
+        QualitySettings.SetQualityLevel(0, true);
     }
 
     public void MediumQuality(){
-        QualitySettings.SetQualityLevel(4, true);
+        QualitySettings.SetQualityLevel(1, true);
     }
 
     public void HighQuality(){
-        QualitySettings.SetQualityLevel(5, true);
+        QualitySettings.SetQualityLevel(2, true);
     }
 
     public void Sensitivity(){

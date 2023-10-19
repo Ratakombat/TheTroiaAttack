@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.TextCore.Text;
@@ -49,6 +50,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private int damage = 5;
 
+
     private CharacterController controller;
     private PlayerInput playerInput;
     private Vector3 playerVelocity;
@@ -63,7 +65,9 @@ public class PlayerController : MonoBehaviour
     int jumpAnimation;
     int recoilAnimation;
 
-
+    //Audio
+    [SerializeField] private AudioSource stepSource;
+    [SerializeField] private AudioClip[] stepsClip;
     
     int moveXAnimationParameterId;
     int moveZAnimationParameterId;
@@ -79,6 +83,8 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
         playerStats = GetComponent<PlayerStats>();
+
+        
 
         cameraTransform = Camera.main.transform;
         moveAction = playerInput.actions["Move"];
@@ -113,14 +119,13 @@ public class PlayerController : MonoBehaviour
 
         if(!playerStats.IsDead())
         {
-
-        
-
+            
+            
             RaycastHit hit;
             
             GameObject bullet = GameObject.Instantiate(bulletPrefab, barrelTransform.position, Quaternion.identity, bulletParent);
             BulletController bulletController = bullet.GetComponent<BulletController>();
-            
+            GetComponent<AudioSource>().Play();
 
             if(Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity)){
                 
@@ -129,6 +134,7 @@ public class PlayerController : MonoBehaviour
 
                 CharacterStats enemyStats = hit.transform.GetComponent<CharacterStats>();
                 enemyStats.TakeDamage(damage);
+                
             }
             else {
                 bulletController.target = cameraTransform.position + cameraTransform.forward * bulletHitMissDistance;
@@ -143,9 +149,13 @@ public class PlayerController : MonoBehaviour
     {
         if (!playerStats.IsDead())
         {
-            
-        
-
+            //Audio
+            if (controller.isGrounded && controller.velocity.magnitude > 0.01f && !stepSource.isPlaying)
+            {
+                stepSource.clip = stepsClip[UnityEngine.Random.Range(0, stepsClip.Length)];
+                stepSource.Play();
+            }
+            //--------------
 
             aimTarget.position = cameraTransform.position + cameraTransform.forward * aimDistance;
 
@@ -162,10 +172,11 @@ public class PlayerController : MonoBehaviour
 
             Vector3 move = new Vector3(currentAnimationBlendVector.x, 0, currentAnimationBlendVector.y);
 
-
             move = move.x * cameraTransform.right.normalized + move.z * cameraTransform.forward.normalized;
             move.y = 0f;
             controller.Move(move * Time.deltaTime * playerSpeed);
+
+            
 
             //Blend Strafe Animation
             animator.SetFloat(moveXAnimationParameterId, currentAnimationBlendVector.x);
@@ -176,6 +187,7 @@ public class PlayerController : MonoBehaviour
             {
                 playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
                 animator.CrossFade(jumpAnimation, animationPlayTransition);
+                
             }
 
             playerVelocity.y += gravityValue * Time.deltaTime;
@@ -197,4 +209,6 @@ public class PlayerController : MonoBehaviour
 
 
     } 
+
+
 }

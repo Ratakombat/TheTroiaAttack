@@ -27,12 +27,12 @@ public class EnemyStats : CharacterStats
 
     public override void InitVariables()
     {
-        maxHealth = 25;
+        maxHealth = 30;
         SetHealthTo(maxHealth);
         isDead = false;
 
         damage = 5;
-        attackSpeed = 1.3f;
+        attackSpeed = 1f;
         canAttack = true;
     }
 }

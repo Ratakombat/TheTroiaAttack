@@ -19,6 +19,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private TextMeshProUGUI enemiesAliveNum;
     [SerializeField] private GameObject timeToNextWaveText;
     [SerializeField] private GameObject timeToNextWaveNum;
+    [SerializeField] private GameObject congratulations;
     
     private SpawnState state = SpawnState.COUTING;
     
@@ -31,6 +32,7 @@ public class EnemySpawner : MonoBehaviour
     private void Start() {
         timeToNextWaveText.SetActive(false);
         timeToNextWaveNum.SetActive(false);
+        congratulations.SetActive(false);
         wavesCountdown = timeBetweenWaves;
         currentWave = 0;
     }
@@ -118,6 +120,8 @@ public class EnemySpawner : MonoBehaviour
 
         if(currentWave + 1 > waves.Length - 1){
             currentWave = 0;
+
+            congratulations.SetActive(true);
             Debug.Log("Complete all the waves");
         }
         else{

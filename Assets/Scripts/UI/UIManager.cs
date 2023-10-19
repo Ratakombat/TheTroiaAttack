@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
    
             hudCanvas.SetActive(state);
             endCanvas.SetActive(!state);
-            PauseCanvas.SetActive(!state);
+            PauseCanvas.SetActive(false);
     }
 
     public void Restart(){

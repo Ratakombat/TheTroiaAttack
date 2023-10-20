@@ -13,5 +13,5 @@ EditorBuildSettings:
     guid: 62a9e2989c027704abbf8ab64968db50
   - enabled: 1
     path: Assets/Scenes/ParkourMode.unity
-    guid: 3eb893591a85b004785a3737a1217428
+    guid: c1783ed06ad8a7a419303f8fbc498512
   m_configObjects: {}

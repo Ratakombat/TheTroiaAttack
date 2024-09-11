@@ -1,6 +1,6 @@
 <h1>
     <img src="GitHub/TituloBranco.png"/>
-    <p>Um jogo feito na Unity, por alunos do 2°C do CETEPI-1 de Paulo Afonso - Bahia</p>
+    <p>Um jogo feito na Unity, por alunos do 2°C 2023 do CETEPI-1 de Paulo Afonso - Bahia</p>
 </h1>
 
 ## 🔴Sobre
